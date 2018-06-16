@@ -29,21 +29,23 @@ module.exports = {
   // These are the "entry points" to our application.
   // This means they will be the "root" imports that are included in JS bundle.
   // The first two entry points enable "hot" CSS and auto-refreshes for JS.
+  // Create chunks instead of single bundle
   entry: {
     // We ship a few polyfills by default:
     polyfills: require.resolve('./polyfills'),
     devClient: require.resolve('react-dev-utils/webpackHotDevClient'),
     main: paths.appIndexJs
   },
+  //
   output: {
     // Next line is not used in dev but WebpackDevServer crashes without it:
     path: paths.appBuild,
     pathinfo: true,
-    // filename: 'static/js/bundle.js',
+    // Create chunks instead of single bundle
     filename: 'static/js/[name].[hash].bundle.js',
-
     // There are also additional JS chunk files if you use code splitting.
     chunkFilename: 'static/js/[name].[hash].chunk.js',
+    //
     publicPath: publicPath,
     devtoolModuleFilenameTemplate: info =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),

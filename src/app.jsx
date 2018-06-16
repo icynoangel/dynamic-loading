@@ -14,7 +14,9 @@ class App extends Component {
   }
 
   toggle() {
-    return import(/* webpackChunkName: "dynamic" */ './dynamic').then(module => {      
+    // Lazy loading using webpack webpackChunkName
+    // https://webpack.js.org/guides/code-splitting/#dynamic-imports
+    import(/* webpackChunkName: "dynamic" */ './dynamic').then(module => {      
       this.setState({
         show: !this.state.show,
         comp: module.default
